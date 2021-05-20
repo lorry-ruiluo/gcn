@@ -1,5 +1,5 @@
-from gcn.layers import *
-from gcn.metrics import *
+from layers import *
+from metrics import *
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -140,6 +140,8 @@ class GCN(Model):
         self.placeholders = placeholders
 
         self.optimizer = tf.train.AdamOptimizer(learning_rate=FLAGS.learning_rate)
+
+        # self.loss_all = tf.SparseCategoricalCrossentropy(reduction=tf.compat.v1.losses.Reduction.NONE)
 
         self.build()
 
